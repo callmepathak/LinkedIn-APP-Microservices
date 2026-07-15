@@ -4,6 +4,7 @@ import com.codingshuttle.linkedInProject.postsService.auth.AuthContextHolder;
 import com.codingshuttle.linkedInProject.postsService.dto.PostCreateRequestDto;
 import com.codingshuttle.linkedInProject.postsService.dto.PostDto;
 import com.codingshuttle.linkedInProject.postsService.service.PostService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,11 +21,22 @@ import java.util.List;
 public class PostController {
 
     private final PostService postService;
+//
+//    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+//    public ResponseEntity<PostDto> createPost(@RequestPart("post") PostCreateRequestDto postCreateRequestDto,
+//                                              @RequestPart("file")MultipartFile file) {
+//        PostDto postDto = postService.createPost(postCreateRequestDto, file);
+//        return new ResponseEntity<>(postDto, HttpStatus.CREATED);
+//    }
 
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<PostDto> createPost(@RequestPart("post") PostCreateRequestDto postCreateRequestDto,
-                                              @RequestPart("file")MultipartFile file) {
-        PostDto postDto = postService.createPost(postCreateRequestDto, file);
+    public ResponseEntity<PostDto> createPost(
+            @RequestPart("post") String postJson,
+            @RequestPart("file") MultipartFile file) throws Exception {
+
+        ObjectMapper mapper = new ObjectMapper();
+        PostCreateRequestDto dto = mapper.readValue(postJson, PostCreateRequestDto.class);
+        PostDto postDto = postService.createPost(dto, file);
         return new ResponseEntity<>(postDto, HttpStatus.CREATED);
     }
 
