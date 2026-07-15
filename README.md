@@ -3,8 +3,7 @@ Project: LinkedIn Clone — Microservices-based Social Networking Platform
 Tech Stack & Tools:
 Java 21, Spring Boot 3.x, Maven, PostgreSQL, Neo4j, Apache Kafka, Spring Cloud Gateway, Netflix Eureka, OpenFeign, Docker, Kubernetes, Jib, Cloudinary, JWT, BCrypt
 
-1.Architected and developed a LinkedIn-like social networking platform using a microservices architecture with 7 independent services (API Gateway, User Service, Posts Service, 
-Connections Service, Notification Service, Uploader Service, Eureka Discovery Server) communicating via OpenFeign and Apache Kafka.
+1.Architected and developed a LinkedIn-like social networking platform using a microservices architecture with 7 independent services (API Gateway, User Service, Posts Service,Connections Service, Notification Service, Uploader Service, Eureka Discovery Server) communicating via OpenFeign and Apache Kafka.
 
 2.Implemented event-driven architecture using Apache Kafka for asynchronous communication, including user creation events triggering automatic Person node creation in Neo4j,
 and post/like events generating persisted notifications.
@@ -29,6 +28,3 @@ resource-constrained container specifications.
 across all services.
 
 10.Built a real-time notification system via Kafka consumers that creates and persists database notifications when connections create posts or interact with content.
-
-
-
