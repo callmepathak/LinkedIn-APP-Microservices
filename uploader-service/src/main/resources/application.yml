@@ -7,11 +7,11 @@ eureka.client.service-url.defaultZone: http://localhost:8761/eureka
 eureka:
   instance:
     prefer-ip-address: true
+
 cloudinary:
   cloud-name: dd5fktvxv
   api-key: 824958365185222
   api-secret: KirmZyzS0qcIejGav_-VQBBmJ1A
-
 
 gcloud:
   storage-bucket-name: p4-cs-linkedinapp
